@@ -32,11 +32,11 @@ static const Rule rules[] = {
          *      WM_CLASS(STRING) = instance, class
          *      WM_NAME(STRING) = title
          */
-        /* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-        { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-        { "Brave", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-        { "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-        { NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+        /* class     instance  title tags mask  isfloating  isterminal  noswallow  monitor */
+        { "Gimp",    	NULL,     	NULL,           0,		1,	0,	0,	-1 },
+        { "Brave", 	NULL,     	NULL,           0,		0,      0,	-1,	-1 },
+        { "Alacritty",	NULL,     	NULL,		0,		0,      1,	0,	-1 },
+        { NULL,      	NULL,     	"Event Tester",	0,		0,      0,	1,	-1 }, /* xev */
 };
 
 /* layout(s) */
@@ -77,7 +77,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,                       XK_o,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|Mod4Mask,              XK_x,      incrgaps,       {.i = +1 } },
@@ -96,7 +96,7 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } },
-	{ MODKEY,                       XK_space, zoom,           {0} },
+	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY, 	                XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
