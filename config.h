@@ -64,15 +64,14 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "rofi", "-modi", "drun", "-show", "drun", "-show-icons", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray, "-nf", col_rum, "-sb", col_orange, "-sf", col_violet, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *imgurcmd[] = { "imgur-screenshot", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("rofi -modi drun -show drun -show-icons") },
 	{ MODKEY, 	                XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = imgurcmd } },
+	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   SHCMD("imgur-screenshot") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -80,14 +79,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|Mod4Mask,              XK_x,      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod4Mask,              XK_z,      incrgaps,       {.i = -1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_x,      incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_z,      incrogaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_x,      incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_z,      incrigaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
+	{ MODKEY,	                XK_z,      incrgaps,       {.i = +3 } },
+	{ MODKEY,	                XK_x,      incrgaps,       {.i = -3 } },
+	{ MODKEY|ControlMask, 		XK_z,      incrigaps,      {.i = -1 } },
+	{ MODKEY,	                XK_a,      togglegaps,     {0} },
+	{ MODKEY|ShiftMask,    		XK_a,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } },
 	{ MODKEY,                       XK_o,      incrihgaps,     {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_y,      incrivgaps,     {.i = +1 } },
@@ -96,7 +92,8 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } },
-	{ MODKEY,                       XK_space,  zoom,           {0} },
+	{ MODKEY,			XK_space,  zoom,	   {0} },
+	{ MODKEY|ShiftMask,		XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY, 	                XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -118,7 +115,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,           SHCMD("sysact") },
 };
 
 /* button definitions */
