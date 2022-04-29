@@ -11,10 +11,10 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[] = { "monospace:size=10", "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true" };
+static const char *fonts[] = { "monospace:size=10"};
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_violet[]      = "#0c082c";
-static const char col_orange[]      = "#f24024";
+static const char col_violet[]      = "#d7a9fc";
+static const char col_orange[]      = "#4d00b3";
 static const char col_rum[]         = "#7c6c84";
 static const char col_gray[]        = "#eeeeee";
 static const char col_gold[]        = "#f2e96b";
